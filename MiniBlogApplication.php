@@ -19,6 +19,6 @@ class MiniBlogApplication extends Application
     {
         $this->db_manager->connect('master', array(
 
-        ))
+        ));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Router()
+class Router
 {
     protected $routes;
 
@@ -24,7 +24,7 @@ class Router()
             }
 
             $pattern = '/' . implode('/', $tokens);
-            $routes[%pattern] = $params;
+            $routes[$pattern] = $params;
         }
 
         return $routes;

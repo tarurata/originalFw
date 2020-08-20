@@ -8,7 +8,7 @@ class DbManager
     public function connect($name, $params)
     {
         $params = array_merge(array(
-            'dsn' => 'mysql',
+            'dsn' => 'mysql:dbname=mini_blog;host=mysql',
             'user' => 'root',
             'password' => 'root',
             'options' => array(),

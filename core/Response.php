@@ -5,7 +5,7 @@ class Response
     protected $content;
     protected $status_code = 200;
     protected $status_text = 'OK';
-    protected $http_header = array();
+    protected $http_headers = array();
 
     public function send()
     {

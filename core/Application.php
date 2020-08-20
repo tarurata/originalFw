@@ -132,7 +132,7 @@ abstract class Application
         if (!class_exists($controller_class)){
             $controller_file = $this->getControllerDir() . '/' . $controller_class . '.php';
 
-            if (!is_readable$controller_file)) {
+            if (!is_readable($controller_file)) {
                 return false;
             } else {
                 require_once $controller_file;
@@ -152,7 +152,7 @@ abstract class Application
         $message = $this->isDebugMode() ? $e->getMessage() : 'Page not found.';
         $message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
 
-        $this->response->setontent(<<<EOF
+        $this->response->setContent(<<<EOF
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -164,5 +164,6 @@ abstract class Application
 </body>
 </html>
 EOF
-    }
+    );
+  }
 }

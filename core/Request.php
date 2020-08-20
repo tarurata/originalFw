@@ -40,7 +40,7 @@ class Request
 
     public function isSsl()
     {
-        if (isset($_SERVER['HTTPS'] && $_SERVER['HTTPS'] === 'on') {
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
             return true;
         }
 
@@ -56,7 +56,7 @@ class Request
     {
         $script_name = $_SERVER['SCRIPT_NAME'];
 
-        $request_uri = $this->getRequestUri();
+        $request_uri = $this->getRequestsUri();
 
         if ( 0 === strpos($request_uri, $script_name)) {
             return $script_name;
@@ -70,7 +70,7 @@ class Request
     public function getPathInfo()
     {
         $base_url = $this->getBaseUrl();
-        $request_uri = $this->getRequestUri();
+        $request_uri = $this->getRequestsUri();
 
         if ( false !== ($pos = strpos($request_uri, '?'))) {
             $request_uri = substr($request_uri, strlen($base_url));
