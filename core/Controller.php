@@ -9,6 +9,7 @@ abstract class Controller
     protected $response;
     protected $session;
     protected $db_manager;
+    protected $auth_actions = array();
 
     public function __construct($application)
     {
@@ -30,9 +31,22 @@ abstract class Controller
             $this->forward404();
         }
 
+        if ($this->needsAuthentication($action) && !$this->session->isAuthenticated())
+        {
+            throw new UnauthorizedActionException();
+        }
+
         $content = $this->action_method($params);
 
         return $content;
+    }
+    
+    protected function needsAuthentication($action)
+    {
+        if ($this->auth_actions === true || (is_array($this->auth_action)) && in_array($action, $this->auth_actions))) {
+            return true;
+        }
+        return false;
     }
 
     protected function render($variables = array(), $template = null, $layout = 'layout')
@@ -104,5 +118,4 @@ abstract class Controller
 
         return false;
     }
-
 }
