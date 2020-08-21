@@ -22,7 +22,7 @@ abstract class Controller
         $this->db_manager = $application->getDbManager();
     }
 
-    public function run($action, $params = array()))
+    public function run($action, $params = array())
     {
         $this->action_name = $action;
 
@@ -43,7 +43,7 @@ abstract class Controller
     
     protected function needsAuthentication($action)
     {
-        if ($this->auth_actions === true || (is_array($this->auth_action)) && in_array($action, $this->auth_actions))) {
+        if ($this->auth_actions === true || (is_array($this->auth_actions)) && in_array($action, $this->auth_actions)) {
             return true;
         }
         return false;
@@ -77,7 +77,7 @@ abstract class Controller
     protected function redirect($url)
     {
         if (!preg_match('#https://#', $url)) {
-            $protocol = $this->request-<isSsl() ? 'https://' : 'http://';
+            $protocol = $this->request->isSsl() ? 'https://' : 'http://';
             $host = $this->request->getHost();
             $base_url = $this->request->getBaseUrl();
 
@@ -92,7 +92,7 @@ abstract class Controller
     {
         $key = 'csrf_tokens/' . $form_name;
         $tokens = $this->session->get($key, array());
-        if (count($tokens)) >= 10) {
+        if (count($tokens) >= 10) {
             array_shift($tokens);
         }
 
