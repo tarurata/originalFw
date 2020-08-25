@@ -19,7 +19,7 @@ CREATE TABLE status(
     body VARCHAR(255),
     created_at DATETIME,
     PRIMARY KEY(id),
-    UNIQUE KEY user_id_index(user_id)
+    INDEX user_id_index(user_id)
 ) ENGINE = INNODB;
 
 ALTER TABLE following ADD FOREIGN KEY (user_id) REFERENCES user(id);

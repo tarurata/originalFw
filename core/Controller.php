@@ -107,9 +107,9 @@ abstract class Controller
     protected function checkCsrfToken($form_name, $token)
     {
         $key = 'csrf_tokens/' . $form_name;
-        $tokkens = $this->session->get($key, array());
+        $tokens = $this->session->get($key, array());
 
-        if (false !==($pos = array_search($token, $tokens, $true))) {
+        if (false !==($pos = array_search($token, $tokens, true))) {
             unset($tokens[$pos]);
             $this->session->set($key, $tokens);
 
