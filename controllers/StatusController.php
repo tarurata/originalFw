@@ -76,6 +76,7 @@ class StatusController extends Controller
           $this->forward404();
       }
 
-      return $this->render(array('status' => $status)); ?>
+      return $this->render(array('status' => $status));
   }
 }
+?>
