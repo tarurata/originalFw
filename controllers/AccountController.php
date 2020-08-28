@@ -151,7 +151,7 @@ class AccountController extends Controller
       }
 
       $token = $this->request->getPost('_token');
-      if (!$this->checkCsrfToken('accountount/follow', $token)) {
+      if (!$this->checkCsrfToken('account/follow', $token)) {
         return $this->redirect('/user/' . $following_name);
       }
 
@@ -163,9 +163,8 @@ class AccountController extends Controller
       $user = $this->session->get('user');
 
       $following_repository = $this->db_manager->get('Following');
-      $user = $this->session->get('user');
-      if ($user['id'] !== $follow_user['id']) && !$following_repository->isFollowing($user['id'], $follow_user['id']) {
-        $following_repository->insert($user['id'], $follow_userser['id'])
+      if ($user['id'] !== $follow_user['id'] && !$following_repository->isFollowing($user['id'], $follow_user['id'])) {
+        $following_repository->insert($user['id'], $follow_user['id']);
       }
       return $this->redirect('/account');
     }
