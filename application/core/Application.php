@@ -88,4 +88,28 @@ abstract class Application
     {
         return $this->getRootDir() . '/web';
     }
+
+    public function run()
+    {
+        $params = $this->router->resolve($this->request->getPathInfo());
+        if ($params === false) {
+            // todo-A
+        }
+
+        $controller = $params['controller'];
+        $action = $params['action'];
+
+        $this->runAction($controller, $action, $params);
+
+        $this->response->send();
+    }
+
+    public function runAction($controller_name, $action, $params = array())
+    {
+        $controller_class = ucfirst($controller_name) . 'Controller';
+    }
+
+
+
+
 }
