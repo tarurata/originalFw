@@ -21,7 +21,7 @@ class View
     {
         $_file = $this->base_dir . '/' . $_path . '.php';
 
-        extract(array_merge($this->defaults, $variables));
+        extract(array_merge($this->defaults, $_variables));
 
         ob_start();
         ob_implicit_flush(0);
@@ -39,5 +39,10 @@ class View
 
             return $content;
         }
+    }
+
+    public function escape($string)
+    {
+        return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
     }
 }
