@@ -36,9 +36,9 @@ class View
                     '_content' => $content,
                 )
             ));
-
-            return $content;
         }
+
+        return $content;
     }
 
     public function escape($string)
