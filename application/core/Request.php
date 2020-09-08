@@ -36,12 +36,6 @@ class Request
         return $_SERVER['SERVER_NAME'];
     }
 
-    public  function getHost() {
-        if (isset($_SERVER['HTTP_HOST'])) {
-            return $_SERVER['HTTP_HOST'];
-        }
-    }
-
     public function isSsl() {
         if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
             return true;

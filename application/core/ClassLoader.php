@@ -9,7 +9,7 @@ class ClassLoader
         spl_autoload_register(array($this, 'loadClass'));
     }
 
-    public function registerDir()
+    public function registerDir($dir)
     {
         $this->dirs[] = $dir;
     }

@@ -27,11 +27,11 @@ abstract class Controller
 
         $action_method = $action . 'Action';
 
-        if (!meethod_exists($this, $action_method)) {
+        if (!method_exists($this, $action_method)) {
             $this->forward404();
         }
 
-        $content = $this->action_method($params);
+        $content = $this->$action_method($params);
 
         return $content;
     }
@@ -103,24 +103,6 @@ abstract class Controller
         }
 
         return false;
-    }
-
-    public function run($action, $params = array())
-    {
-        $this->action_name = $action;
-
-        $action_method = $action . 'Action';
-        if (!method_exists($this, $action_method)) {
-            $this->forwarded404();
-        }
-
-        if ($this->needsAuthenticatio($action) && !$this->session->isAuthenticated()) {
-            throw new UnauthorizedActionException();
-        }
-
-        $content = $this->$action_method($params);
-
-        return $content;
     }
 
     protected function needsAuthentication($action)

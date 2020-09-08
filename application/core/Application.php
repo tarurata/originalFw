@@ -34,7 +34,7 @@ abstract class Application
         $this->response = new Response();
         $this->session = new Session();
         $this->db_manager = new DbManager();
-        $this->router = new Router($this->registerRoutes);
+        $this->router = new Router($this->registerRoutes());
     }
 
     protected function configure()
@@ -131,7 +131,7 @@ abstract class Application
             {$message}
         </body>
         </html>
-        EOF
+EOF
         );
     }
 
@@ -166,11 +166,4 @@ abstract class Application
 
         return new $controller_class($this);
     }
-
-
-
-
-
-
-
 }
