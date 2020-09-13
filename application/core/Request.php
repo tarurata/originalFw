@@ -10,7 +10,7 @@ class Request
         return false;
     }
 
-    public function getGet($name, $default)
+    public function getGet($name, $default = null)
     {
         if (isset($_GET[$name])) {
             return $_GET[$name];
@@ -19,7 +19,7 @@ class Request
         return $default;
     }
 
-    public function getPost($name, $default)
+    public function getPost($name, $default = null)
     {
         if (isset($_POST[$name])) {
             return $_POST[$name];

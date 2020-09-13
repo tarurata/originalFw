@@ -6,7 +6,7 @@ class AccountController extends Controller
     {
         return $this->render(array(
             'user_name' => '',
-            'pssword' => '',
+            'password' => '',
             '_token' => $this->generateCsrfToken('account/signup'),
         ));
     }
@@ -20,7 +20,7 @@ class AccountController extends Controller
         $token = $this->request->getPost('_token');
 
         if (!$this->checkCsrfToken('account/signup', $token)) {
-            return $this->redirect('account/signup');
+            return $this->redirect('/account/signup');
         }
 
         $user_name = $this->request->getPost('user_name');
@@ -30,7 +30,7 @@ class AccountController extends Controller
 
         if (!strlen($user_name)) {
             $errors[] = 'ユーザIDを入力してください';
-        } else if (!preg_match('/^w{3,20}$/', $user_name)) {
+        } else if (!preg_match('/^\w{3,20}$/', $user_name)) {
             $errors[] = 'ユーザIDは半角英数字およびアンダースコアを3-20字以内で入力してください';
         } else if (!$this->db_manager->get('User')->isUniqueUserName($user_name)) {
             $errors[] = 'ユーザIDはすでに使用されています';
