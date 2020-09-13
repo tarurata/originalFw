@@ -10,11 +10,11 @@ class StatusController extends Controller
         return $this->render(array(
             'statuses' => $statuses,
             'body' => '',
-            '_token' => $this->generateCsrfToken('/status/post'),
+            '_token' => $this->generateCsrfToken('status/post'),
         ));
     }
 
-    public function statusAction()
+    public function postAction()
     {
         if (!$this->request->isPost()) {
             $this->forward404();

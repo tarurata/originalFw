@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php if (isset($title)): echo $this->escape($file) . ' - '; endif ?>Mini Blog</title>
+    <title><?php if (isset($title)): echo $this->escape($title) . ' - '; endif ?>Mini Blog</title>
 </head>
 <body>
 
