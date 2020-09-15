@@ -2,6 +2,8 @@
 
 class StatusController extends Controller
 {
+    protected  $auth_actions = array('index', 'post');
+
     public function indexAction()
     {
         $user = $this->session->get('user');
@@ -65,6 +67,19 @@ class StatusController extends Controller
         return $this->render(array(
             'user' => $user,
             'statuses' => $statuses,
+        ));
+
+        $following = null;
+        if ($this->session->isAuthenticated()) {
+            $my = $this->session->get('user');
+            if ($my['id'] !== $user['id']) {
+                $following = $this->db_manager->get('Following')->isFollowing($my['id'], $user['id']);
+            }
+        }
+
+        return $this->render(array(
+            "following" => $following,
+            "_token" => $this->generateCsrfToken('account/follow'),
         ));
     }
 
