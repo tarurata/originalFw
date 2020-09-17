@@ -32,7 +32,7 @@ class Router
     public function resolve($path_info)
     {
         if('/' !== substr($path_info, 0, 1)) {
-            $path_info = '/' . $pathinfo;
+            $path_info = '/' . $path_info;
         }
 
         foreach ($this->routes as $pattern => $params) {
