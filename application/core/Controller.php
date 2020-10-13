@@ -27,8 +27,8 @@ abstract class Controller
         $this->action_name = $action;
 
         $action_method = $action .'Action';
-        if (!method_exists(($this, $action_method))) {
-            $this->forward404()
+        if (!method_exists($this, $action_method)) {
+            $this->forward404();
         }
 
         if ($this->needsAuthentication($action) && !$this->session->isAuthenticated()) {
@@ -47,7 +47,6 @@ abstract class Controller
             return true;
         }
             return false;
-        }
     }
 
     protected function render($variables = array(), $template = null, $layout = 'layout')

@@ -15,11 +15,11 @@ class DbManager
             'options' => array(),
         ), $params);
 
-        $con = PDO(
+        $con = new PDO(
             $params['dsn'],
             $params['user'],
             $params['password'],
-            $params['options'],
+            $params['options']
         );
 
         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -48,7 +48,7 @@ class DbManager
             $con = $this->getConnection();
         }
 
-        retrun $con;
+        return $con;
     }
 
     public function get($repository_name)
